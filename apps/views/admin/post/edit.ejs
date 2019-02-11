@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sửa bài viết</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="/admin">Blog Admin</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 3</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Edit post
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <% if(data && data.error) { %>
+                                <div id="login-alert" class="alert alert-danger col-sm-12">
+                                    <%= data.error %>
+                                </div>
+                                <%} %>
+
+                                    <form role="form" method="" action="">
+                                        <input class="id" type="hidden" name="id" value="<% if(data && data.post) {%><%= data.post.id%><%}%>">
+                                        <div class="form-group">
+                                            <label>Title</label>
+                                            <input class="form-control title" name="title" placeholder="Title" value=" <% if(data && data.post) {%><%= data.post.title%><%}%>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Content</label>
+                                            <textarea class="form-control" name="content" placeholder="Content"><% if(data && data.post) {%><%= data.post.content%><%}%></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Author</label>
+                                            <input class="form-control author" name="author" placeholder="Author" value="<% if(data && data.post) {%><%= data.post.author%><%}%>">
+                                        </div>
+                                        <input type="button" name="" value="Sửa" class="btn btn-success post_edit">
+                                    </form>
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/post.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
+</body>
+
+</html>

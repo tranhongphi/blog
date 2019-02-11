@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DashBoard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="/admin">Blog Admin</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/admin/post">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/user">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 3</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="admin/post/new" class="btn btn-success float-right mx-5 my-3">Thêm mới</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading p-3 bg-primary text-center text-white">
+            Posts
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-secondary">
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Author</th>
+                            <th>Create time</th>
+                            <th>Update time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(data && data.posts) {%>
+                            <% for(var i=0; i < data.posts.length; i++) {%>
+                                <tr>
+                                    <td>
+                                        <%= data.posts[i].id %>
+                                    </td>
+                                    <td>
+                                        <%= data.posts[i].title %>
+                                    </td>
+                                    <td>
+                                        <%- data.posts[i].content %>
+                                    </td>
+                                    <td>
+                                        <%= data.posts[i].author %>
+                                    </td>
+                                    <td>
+                                        <%= data.posts[i].created_at %>
+                                    </td>
+                                    <td>
+                                        <%= data.posts[i].updated_at %>
+                                    </td>
+                                    <td>
+                                        <a href="admin/post/edit/<%=data.posts[i].id %>" class="btn btn-primary">Edit</a>
+                                        <button class="btn btn-danger post_delete" post_id="<%=data.posts[i].id %>">Delete</button>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/post.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+</html>
